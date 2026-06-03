@@ -375,6 +375,195 @@
         color: var(--sage-ink);
       }
 
+      .copy-panel,
+      .review-panel,
+      .priority-panel {
+        border: 1px solid rgba(32, 36, 42, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.86);
+      }
+
+      .copy-panel {
+        display: grid;
+        gap: 16px;
+        padding: 24px;
+        box-shadow: 0 14px 46px rgba(32, 36, 42, 0.08);
+      }
+
+      .copy-note {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .name-field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .name-field span {
+        color: var(--sage-ink);
+        font-weight: 900;
+      }
+
+      .name-field input {
+        min-height: 46px;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf8;
+        color: #20242a;
+        font: inherit;
+      }
+
+      .copy-text {
+        width: 100%;
+        min-height: 420px;
+        resize: vertical;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf8;
+        color: #20242a;
+        font: inherit;
+        line-height: 1.65;
+        white-space: pre-wrap;
+      }
+
+      .copy-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .copy-status {
+        margin-bottom: 0;
+        color: var(--sage-ink);
+        font-size: 0.92rem;
+        font-weight: 800;
+      }
+
+      .review-panel {
+        overflow: hidden;
+      }
+
+      .review-row {
+        display: grid;
+        grid-template-columns: minmax(150px, 0.58fr) minmax(0, 1fr) minmax(0, 1.1fr);
+        gap: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .review-row:last-child {
+        border-bottom: 0;
+      }
+
+      .review-cell {
+        padding: 18px;
+        border-right: 1px solid var(--line);
+      }
+
+      .review-cell:last-child {
+        border-right: 0;
+      }
+
+      .review-cell strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .review-cell p {
+        margin-bottom: 0;
+        color: #4e5862;
+        font-size: 0.95rem;
+      }
+
+      .severity {
+        display: inline-flex;
+        width: fit-content;
+        margin-bottom: 10px;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: #f2e4d5;
+        color: #7a351f;
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .severity.mid {
+        background: #f2ebd8;
+        color: #765616;
+      }
+
+      .severity.low {
+        background: #e7eee8;
+        color: var(--sage-ink);
+      }
+
+      .tier-board {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 22px;
+      }
+
+      .tier-card {
+        padding: 18px;
+        border: 1px solid rgba(32, 36, 42, 0.14);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .tier-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.02rem;
+      }
+
+      .tier-card p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .priority-panel {
+        padding: 22px;
+      }
+
+      .priority-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .priority-line {
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf8;
+      }
+
+      .priority-line span {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--sage);
+        color: white;
+        font-weight: 900;
+      }
+
+      .priority-line p {
+        margin-bottom: 0;
+      }
+
       footer {
         padding: 28px 0 44px;
         color: var(--muted);
@@ -411,7 +600,9 @@
         }
 
         .risk-map,
-        .split-flow {
+        .split-flow,
+        .tier-board,
+        .review-row {
           grid-template-columns: 1fr;
         }
 
@@ -421,8 +612,19 @@
 
         .summary-panel,
         .proposal-note,
-        .script-box {
+        .script-box,
+        .copy-panel,
+        .priority-panel {
           padding: 20px;
+        }
+
+        .review-cell {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .review-cell:last-child {
+          border-bottom: 0;
         }
       }
 
@@ -498,6 +700,21 @@
           width: 26px;
           height: 26px;
           font-size: 0.9rem;
+        }
+
+        .copy-text {
+          min-height: 520px;
+          padding: 14px;
+          font-size: 0.96rem;
+        }
+
+        .copy-actions .button {
+          width: 100%;
+        }
+
+        .priority-line {
+          grid-template-columns: 28px 1fr;
+          padding: 12px;
         }
       }
 
@@ -652,6 +869,272 @@
         </div>
       </section>
 
+      <section id="copy-message" aria-labelledby="copy-message-title">
+        <div class="section-head">
+          <h2 id="copy-message-title">엄마가 바로 보낼 문구</h2>
+          <p>
+            아래 글은 길게 고민하지 않고 복사해서 보낼 수 있게 정리했어. 공개 페이지라
+            사건번호, 주소, 전화번호 같은 민감정보는 일부러 넣지 않았어.
+          </p>
+        </div>
+
+        <div class="copy-panel">
+          <label class="name-field" for="client-name">
+            <span>성함 넣기</span>
+            <input id="client-name" type="text" placeholder="성함을 입력하면 아래 문구에 자동으로 들어가" autocomplete="name">
+          </label>
+
+          <textarea id="lawyer-message" class="copy-text" readonly>변호사님, 안녕하세요. [성함]입니다.
+
+보내주신 위임계약서 잘 확인했습니다. 두 가지만 조정 부탁드리고 싶어 연락드립니다.
+
+1. 착수금 분납
+착수금 400만원을 계약 시 일시불로 내기에는 부담이 있어, 아래와 같이 분납이 가능할지 여쭙고 싶습니다.
+- 계약 시: 200만원
+- 변론 진행 중: 100만원
+- 변론종결 무렵: 100만원
+일정이나 회차는 변호사님 편하신 대로 조정해 주셔도 괜찮습니다.
+
+2. 성공보수 기준
+계약서 제7조에 성공보수가 '경제적 이득(감액 금액)의 10%'로 되어 있는데, 저는 원고이다 보니 '감액'보다는 실제로 회수되는 금액 기준이 맞을 것 같습니다. '회수금액의 10%'로 정정해 주실 수 있을까요?
+
+검토 후 회신 주시면 감사하겠습니다. 감사합니다.</textarea>
+          <div class="copy-actions">
+            <button class="button" type="button" data-copy-target="lawyer-message">문구 복사하기</button>
+            <p class="copy-status" aria-live="polite">복사 버튼을 누르면 위 문구가 그대로 복사돼.</p>
+          </div>
+          <p class="copy-note">
+            이름이 들어간 문구라 링크를 다른 사람에게 넓게 공유하지 않는 게 좋아.
+          </p>
+        </div>
+      </section>
+
+      <section id="cross-review" aria-labelledby="cross-review-title">
+        <div class="section-head">
+          <h2 id="cross-review-title">교차검증 결론</h2>
+          <p>
+            이건 법률자문이 아니라 서명 전 협상·검토용 체크리스트야. 기준은 변호사 편이
+            아니라 원고 의뢰인에게 불리한 부분을 먼저 찾는 쪽으로 잡았어.
+          </p>
+        </div>
+
+        <div class="review-panel" role="list" aria-label="원고 관점 독소조항 교차검증">
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity">심각도: 상</span>
+              <strong>제7조 성공보수 기준</strong>
+            </div>
+            <div class="review-cell">
+              <strong>판단: 맞음</strong>
+              <p>원고는 돈을 받아내는 쪽인데 계약서가 경제적 이득을 “감액 금액”으로 적고 있어 피고 템플릿 오용으로 볼 여지가 커.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>“감액” 대신 “회수금액” 또는 최소한 “인용금액 중 실제 지급받은 금액” 기준으로 고치는 게 원고에게 유리해.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity">심각도: 상</span>
+              <strong>성공보수 지급시기 선고시</strong>
+            </div>
+            <div class="review-cell">
+              <strong>판단: 맞음</strong>
+              <p>“선고시” 기준이면 판결은 이겼지만 상대방이 무자력이라 실제 회수가 0원인 경우에도 성공보수 논쟁이 생길 수 있어.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>성공보수 지급시기는 실제 회수 시, 또는 회수된 금액 비율에 따라 지급한다고 적는 게 안전해.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity">심각도: 상</span>
+              <strong>제6조 제4항 시간당 보수율</strong>
+            </div>
+            <div class="review-cell">
+              <strong>판단: 맞음</strong>
+              <p>시간당 보수율이 계약서에 없는데 해지 시 착수보수에서 공제한다고 되어 있어 금액을 예측하기 어려워.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>시간당 단가, 보조인력 단가, 공제 전 시간기록표 제공을 특약에 넣는 게 좋아.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity">심각도: 상</span>
+              <strong>제7조 나③ + 제9조</strong>
+            </div>
+            <div class="review-cell">
+              <strong>판단: 맞음</strong>
+              <p>정당한 사유 없는 해지와 제9조 사임을 승소처럼 보는데, 제9조는 고의가 아닌 허위 진술에도 사임 가능하다고 되어 있어 넓어.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>정당한 사유를 정의하고, 의뢰인에게 귀책 없는 해지·사임은 성공보수 발생 사유에서 빼야 해.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity">심각도: 상</span>
+              <strong>제14조 인장조각</strong>
+            </div>
+            <div class="review-cell">
+              <strong>판단: 맞음</strong>
+              <p>사후 통지만으로 도장을 새기고 사용할 수 있게 되어 있어 권한 범위가 너무 넓어.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>인장 조각과 사용은 서류별 사전승인 없이는 하지 않는다고 특약에 넣는 게 타당해.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity mid">심각도: 중</span>
+              <strong>제8조 실비</strong>
+            </div>
+            <div class="review-cell">
+              <strong>판단: 부분 수정</strong>
+              <p>실비를 의뢰인이 부담하는 구조 자체는 보통 있을 수 있어. 다만 감정료처럼 큰 비용의 예상액과 사전승인 기준이 없다는 점이 문제야.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>감정료·예납금 등 일정 금액 이상 비용은 사전 견적과 동의 후 지출한다고 정리해두면 좋아.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity">심각도: 상</span>
+              <strong>특약사항·상대방·날짜 등 공란</strong>
+            </div>
+            <div class="review-cell">
+              <strong>판단: 맞음</strong>
+              <p>특약사항, 상대방, 환급계좌, 날짜, 주소·등록번호 칸이 비어 있어 나중에 해석이나 보완 문제가 생길 수 있어.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>빈칸은 채우거나 해당 없으면 사선 처리하고, 합의한 분납·성공보수 기준은 특약사항에 직접 적어야 해.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity">심각도: 상</span>
+              <strong>제13조 지급보장</strong>
+            </div>
+            <div class="review-cell">
+              <strong>추가 발견</strong>
+              <p>금전, 문서, 자료 등을 유치하거나 상계할 수 있다는 범위가 넓어 원고가 다음 절차나 강제집행을 이어가는 데 방해가 될 수 있어.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>원본 증거, 소송 필수 문서, 판결문, 환급금은 보수채권 담보로 유치·상계하지 않는다고 적어야 해.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity mid">심각도: 중</span>
+              <strong>제12조 자료 폐기</strong>
+            </div>
+            <div class="review-cell">
+              <strong>추가 발견</strong>
+              <p>종료 통지 후 3개월 내 별도 의사표시가 없으면 임의 폐기할 수 있어 원본 자료가 섞이면 위험해.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>원본 증거는 폐기 대상에서 제외하고, 폐기 전 재통지와 전자 사본 제공을 요청하면 좋아.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity mid">심각도: 중</span>
+              <strong>제11조 보수지급 지체</strong>
+            </div>
+            <div class="review-cell">
+              <strong>추가 발견</strong>
+              <p>분납을 협상 중이라면 한 번의 지체가 착수 중단이나 사임으로 바로 이어질 수 있는 구조가 부담이야.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>지체 후 즉시 중단이 아니라 서면 최고와 7일 정도의 보정기간을 둔다고 정리하는 게 좋아.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity mid">심각도: 중</span>
+              <strong>제2조 위임한계</strong>
+            </div>
+            <div class="review-cell">
+              <strong>추가 발견</strong>
+              <p>1심만 위임하고 강제집행은 별도라고 되어 있어, 원고가 판결을 받아도 실제 돈을 받는 절차는 별도 비용이 될 수 있어.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>강제집행 포함 여부와 별도 비용 기준을 미리 확인해두는 게 좋아.</p>
+            </div>
+          </article>
+
+          <article class="review-row" role="listitem">
+            <div class="review-cell">
+              <span class="severity low">심각도: 하</span>
+              <strong>제3조·제10조·제15조</strong>
+            </div>
+            <div class="review-cell">
+              <strong>판단: 알아둘 것</strong>
+              <p>수권범위, 통지의무, 비밀유지는 조항 자체가 바로 독소라고 보기는 어려워.</p>
+            </div>
+            <div class="review-cell">
+              <strong>요청 방향</strong>
+              <p>다만 합의, 청구 포기, 소 취하 같은 중대한 처분은 별도 사전승인을 받는다고 위임장과 함께 확인하면 좋아.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="tier-board" aria-label="수정 우선순위 분류">
+          <article class="tier-card">
+            <h3>반드시 고쳐야 할 것</h3>
+            <p>성공보수 기준·지급시기, 제7조 나③과 제9조, 시간당 보수율, 인장조각, 지급보장·유치, 공란.</p>
+          </article>
+          <article class="tier-card">
+            <h3>고치면 좋은 것</h3>
+            <p>실비 사전승인, 자료 폐기 전 재통지, 보수지급 지체 시 보정기간, 강제집행 비용 기준.</p>
+          </article>
+          <article class="tier-card">
+            <h3>그냥 알아두면 될 것</h3>
+            <p>1심만 위임된다는 점, 수권범위는 별도 위임장으로 정한다는 점, 중요한 처분은 사전승인을 확인할 점.</p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="top-five-title">
+        <div class="section-head">
+          <h2 id="top-five-title">변호사에게 정정 요청할 조항 우선순위 top 5</h2>
+          <p>
+            한 번에 다 고치기 어렵다면 아래 다섯 줄부터 요청하면 돼.
+          </p>
+        </div>
+
+        <div class="priority-panel">
+          <ol class="priority-list">
+            <li class="priority-line"><span>1</span><p>제7조 성공보수는 회수금액 기준으로 하고, “감액 금액” 표현은 삭제해 주세요.</p></li>
+            <li class="priority-line"><span>2</span><p>성공보수 지급시기는 실제 회수 시 또는 회수된 금액 비율에 따라 지급하는 것으로 바꿔 주세요.</p></li>
+            <li class="priority-line"><span>3</span><p>제6조 제4항의 시간당 보수율과 시간기록표 제공 기준을 계약서에 적어 주세요.</p></li>
+            <li class="priority-line"><span>4</span><p>원본 증거와 소송 필수 문서, 판결문, 환급금은 유치·상계 대상에서 제외해 주세요.</p></li>
+            <li class="priority-line"><span>5</span><p>제14조 인장 조각과 사용은 서류별 사전승인 없이는 하지 않는 것으로 특약에 넣어 주세요.</p></li>
+          </ol>
+        </div>
+      </section>
+
       <section aria-labelledby="questions-title">
         <div class="section-head">
           <h2 id="questions-title">서명 전에 물어볼 질문</h2>
@@ -710,5 +1193,46 @@
       이 메모는 가족이 계약 내용을 이해하기 위한 체크리스트입니다. 최종 법률 판단은 담당 변호사와
       직접 확인해야 합니다.
     </footer>
+
+    <script>
+      const nameInput = document.getElementById("client-name");
+      const lawyerMessage = document.getElementById("lawyer-message");
+      const lawyerMessageTemplate = lawyerMessage?.value ?? "";
+
+      function renderLawyerMessage() {
+        if (!lawyerMessage) {
+          return;
+        }
+
+        const clientName = nameInput?.value.trim() || "[성함]";
+        lawyerMessage.value = lawyerMessageTemplate.replaceAll("[성함]", clientName);
+      }
+
+      nameInput?.addEventListener("input", renderLawyerMessage);
+      renderLawyerMessage();
+
+      document.querySelectorAll("[data-copy-target]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          const status = button.parentElement.querySelector(".copy-status");
+
+          if (!target) {
+            return;
+          }
+
+          try {
+            await navigator.clipboard.writeText(target.value);
+            status.textContent = "복사됐어. 이제 카톡이나 문자에 붙여넣으면 돼.";
+          } catch {
+            target.focus();
+            target.select();
+            const copied = document.execCommand("copy");
+            status.textContent = copied
+              ? "복사됐어. 이제 카톡이나 문자에 붙여넣으면 돼."
+              : "자동 복사가 막히면 선택된 문구를 직접 복사하면 돼.";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
