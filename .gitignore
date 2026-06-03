@@ -1,0 +1,6 @@
+.DS_Store
+.firecrawl/
+.omo/
+*.png
+*.screenshot.*
+node_modules/

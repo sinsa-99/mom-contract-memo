@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>동현이가 엄마에게</title>
+    <meta
+      name="description"
+      content="소송위임계약서에서 먼저 확인할 조항과 변호사에게 제안할 보수 구조를 정리한 가족용 메모"
+    >
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f8f7f2;
+        --ink: #20242a;
+        --muted: #626b74;
+        --line: #d9d2c3;
+        --sage: #526d5b;
+        --sage-ink: #203327;
+        --coral: #c8523b;
+        --gold: #bf8b2e;
+        --blue: #315f7d;
+        --white: #fffdf8;
+        --shadow: 0 22px 70px rgba(32, 36, 42, 0.13);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top left, rgba(191, 139, 46, 0.16), transparent 30rem),
+          linear-gradient(135deg, #f8f7f2 0%, #eef3ee 52%, #f6f1e7 100%);
+        color: var(--ink);
+        font-family:
+          "Pretendard",
+          "Apple SD Gothic Neo",
+          "Malgun Gothic",
+          system-ui,
+          sans-serif;
+        line-height: 1.72;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        min-height: min(86vh, 920px);
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.72fr);
+        gap: 44px;
+        align-items: center;
+        padding: 52px 0 34px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 22px;
+        color: var(--sage-ink);
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 34px;
+        height: 2px;
+        background: var(--sage);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        color: #16191d;
+        font-size: clamp(3rem, 5.8vw, 5.9rem);
+        line-height: 0.98;
+        letter-spacing: 0;
+        word-break: keep-all;
+      }
+
+      .lead {
+        max-width: 720px;
+        margin-bottom: 30px;
+        color: #41484f;
+        font-size: clamp(1.06rem, 1.6vw, 1.28rem);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border: 1px solid #1f2b22;
+        border-radius: 8px;
+        background: #1f2b22;
+        color: #fffdf8;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .button.secondary {
+        background: transparent;
+        color: #1f2b22;
+      }
+
+      .summary-panel {
+        position: relative;
+        padding: 28px;
+        border: 1px solid rgba(32, 36, 42, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.86);
+        box-shadow: var(--shadow);
+      }
+
+      .summary-panel::before {
+        content: "";
+        position: absolute;
+        inset: 10px auto 10px -8px;
+        width: 8px;
+        border-radius: 999px;
+        background: linear-gradient(var(--coral), var(--gold), var(--sage));
+      }
+
+      .metric {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .metric:last-child {
+        border-bottom: 0;
+      }
+
+      .metric strong {
+        font-size: 1.02rem;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .metric b {
+        color: var(--coral);
+        font-size: 1.25rem;
+      }
+
+      section {
+        padding: 62px 0;
+      }
+
+      .section-head {
+        max-width: 760px;
+        margin-bottom: 30px;
+      }
+
+      .section-head h2 {
+        margin-bottom: 10px;
+        font-size: clamp(2rem, 3.5vw, 3.4rem);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .section-head p {
+        color: var(--muted);
+      }
+
+      .risk-map {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .risk-item {
+        min-height: 240px;
+        display: grid;
+        align-content: space-between;
+        gap: 22px;
+        padding: 20px;
+        border: 1px solid rgba(32, 36, 42, 0.14);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .risk-item[data-level="high"] {
+        border-top: 5px solid var(--coral);
+      }
+
+      .risk-item[data-level="watch"] {
+        border-top: 5px solid var(--gold);
+      }
+
+      .risk-item h3 {
+        margin-bottom: 10px;
+        font-size: 1.12rem;
+        line-height: 1.35;
+      }
+
+      .risk-item p {
+        margin-bottom: 0;
+        color: #46505a;
+        font-size: 0.96rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        width: fit-content;
+        padding: 5px 10px;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        color: var(--sage);
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+
+      .proposal {
+        display: grid;
+        grid-template-columns: minmax(0, 0.78fr) minmax(300px, 1fr);
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      .proposal-note,
+      .script-box {
+        border-radius: 8px;
+        border: 1px solid rgba(32, 36, 42, 0.14);
+      }
+
+      .proposal-note {
+        padding: 26px;
+        background: #203327;
+        color: #fffdf8;
+      }
+
+      .proposal-note .amount {
+        display: block;
+        margin: 18px 0 8px;
+        font-size: clamp(2.6rem, 5vw, 4.6rem);
+        line-height: 1;
+        font-weight: 900;
+      }
+
+      .proposal-note p {
+        color: rgba(255, 253, 248, 0.82);
+      }
+
+      .script-box {
+        padding: 28px;
+        background: var(--white);
+      }
+
+      .script-box blockquote {
+        margin: 0;
+        padding: 0;
+        color: #1f252b;
+        font-size: clamp(1.08rem, 2vw, 1.45rem);
+        font-weight: 800;
+        line-height: 1.6;
+      }
+
+      .split-flow {
+        display: grid;
+        grid-template-columns: 1fr 42px 1fr;
+        gap: 14px;
+        align-items: center;
+        margin-top: 24px;
+      }
+
+      .flow-cell {
+        min-height: 128px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #faf6ed;
+      }
+
+      .flow-cell strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--blue);
+      }
+
+      .flow-arrow {
+        text-align: center;
+        color: var(--sage);
+        font-size: 2rem;
+        font-weight: 900;
+      }
+
+      .checklist {
+        display: grid;
+        gap: 12px;
+        max-width: 860px;
+      }
+
+      .check {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 14px;
+        padding: 16px 18px;
+        border-left: 4px solid var(--sage);
+        background: rgba(255, 253, 248, 0.72);
+      }
+
+      .check .mark {
+        width: 28px;
+        height: 28px;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--sage);
+        color: white;
+        font-weight: 900;
+      }
+
+      .share-band {
+        margin: 34px 0 70px;
+        padding: 28px;
+        border: 1px solid rgba(32, 36, 42, 0.14);
+        border-radius: 8px;
+        background: #243746;
+        color: white;
+      }
+
+      .share-band code {
+        display: inline-block;
+        max-width: 100%;
+        padding: 3px 7px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff6d8;
+        overflow-wrap: anywhere;
+      }
+
+      footer {
+        padding: 28px 0 44px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero,
+        .proposal {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 34px;
+        }
+
+        .risk-map {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page {
+          width: min(100% - 22px, 1120px);
+        }
+
+        h1 {
+          font-size: 3rem;
+        }
+
+        section {
+          padding: 42px 0;
+        }
+
+        .risk-map,
+        .split-flow {
+          grid-template-columns: 1fr;
+        }
+
+        .flow-arrow {
+          transform: rotate(90deg);
+        }
+
+        .summary-panel,
+        .proposal-note,
+        .script-box,
+        .share-band {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">계약서 보기 전에 먼저 볼 메모</p>
+          <h1>동현이가 엄마에게</h1>
+          <p class="lead">
+            엄마, 이 계약서는 전부 나쁜 계약이라는 뜻은 아니야. 다만 서명 전에
+            돈이 언제, 왜, 얼마나 나가는지 분명히 해두면 나중에 마음고생을 줄일 수 있어.
+          </p>
+          <div class="hero-actions" aria-label="빠른 이동">
+            <a class="button" href="#proposal">변호사에게 제안할 말</a>
+            <a class="button secondary" href="#risks">먼저 볼 조항 4개</a>
+          </div>
+        </div>
+
+        <aside class="summary-panel" aria-label="계약서 핵심 요약">
+          <div class="metric">
+            <strong>제일 먼저 확인</strong>
+            <b>4개</b>
+            <span>성공보수, 착수금 공제, 자료 유치, 인장조각</span>
+          </div>
+          <div class="metric">
+            <strong>현재 착수보수</strong>
+            <b>4,000,000원</b>
+            <span>계약 체결 시 지급으로 적혀 있음</span>
+          </div>
+          <div class="metric">
+            <strong>핵심 제안</strong>
+            <b>분리</b>
+            <span>착수금과 결과보수/성공보수를 따로 정하기</span>
+          </div>
+        </aside>
+      </header>
+
+      <section id="risks" aria-labelledby="risks-title">
+        <div class="section-head">
+          <h2 id="risks-title">먼저 고치거나 설명받을 조항</h2>
+          <p>
+            복잡한 법률 말보다 중요한 건 간단해. 결과가 없는데도 돈을 내야 하는지,
+            해지하면 얼마가 빠지는지, 내 자료와 도장을 마음대로 쓸 수 있는지가 핵심이야.
+          </p>
+        </div>
+
+        <div class="risk-map">
+          <article class="risk-item" data-level="high">
+            <div>
+              <span class="tag">최우선</span>
+              <h3>제7조 성공보수 간주</h3>
+              <p>
+                실제 이익이 없어도 취하나 해지 상황에서 성공보수가 생길 수 있게 읽혀.
+                결과보수는 실제 경제적 이득이 생겼을 때만 내는 구조로 좁히는 게 좋아.
+              </p>
+            </div>
+          </article>
+
+          <article class="risk-item" data-level="high">
+            <div>
+              <span class="tag">금액 불명확</span>
+              <h3>제6조 제4항 시간당 공제</h3>
+              <p>
+                해지할 때 변호사와 보조인력 시간이 착수금에서 빠질 수 있는데,
+                시간당 보수율이 숫자로 안 적혀 있으면 얼마가 남는지 예측하기 어려워.
+              </p>
+            </div>
+          </article>
+
+          <article class="risk-item" data-level="watch">
+            <div>
+              <span class="tag">자료 보호</span>
+              <h3>제13조 자료 유치·상계</h3>
+              <p>
+                보수 미지급이 있으면 보관 중인 금전, 문서, 자료를 유치하거나 상계할 수
+                있다는 부분이 넓어. 원본 증거와 필수 서류는 제외해달라고 해야 해.
+              </p>
+            </div>
+          </article>
+
+          <article class="risk-item" data-level="watch">
+            <div>
+              <span class="tag">사전승인</span>
+              <h3>제14조 인장조각</h3>
+              <p>
+                도장을 만들어 쓰고 나중에 알려주는 방식은 찝찝해. 서류별로 엄마의 사전
+                문자나 서면 승인을 받은 경우에만 가능하게 바꾸는 게 안전해.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="proposal" aria-labelledby="proposal-title">
+        <div class="section-head">
+          <h2 id="proposal-title">변호사에게 이렇게 제안해보자</h2>
+          <p>
+            싸우자는 말이 아니라 기준을 또렷하게 하자는 말이야. 계약금처럼 보이는
+            400만원 전체를 한 덩어리로 두지 말고, 시작 비용과 결과 비용을 나누자는 제안이야.
+          </p>
+        </div>
+
+        <div class="proposal">
+          <div class="proposal-note">
+            <span>현재 확인된 착수보수</span>
+            <strong class="amount">4,000,000원</strong>
+            <p>
+              이 금액을 전부 한 번에 확정 비용으로 보기보다, 실제 착수에 필요한 돈과
+              결과가 나왔을 때 지급하는 돈을 나눌 수 있는지 물어보는 게 핵심이야.
+            </p>
+          </div>
+
+          <div class="script-box">
+            <blockquote>
+              “변호사님, 400만원을 전부 착수보수로 확정하기보다
+              기본 착수금은 따로 정하고, 실제 감액이나 유리한 결과가 나왔을 때
+              결과보수 또는 성공보수를 따로 지급하는 방식으로 조정할 수 있을까요?”
+            </blockquote>
+
+            <div class="split-flow" aria-label="보수 분리 구조">
+              <div class="flow-cell">
+                <strong>착수금</strong>
+                <span>사건 검토, 답변서 준비, 기본 진행에 대한 시작 비용</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true">+</div>
+              <div class="flow-cell">
+                <strong>결과보수 / 성공보수</strong>
+                <span>실제 감액 금액이나 경제적 이득이 확정됐을 때 지급</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="questions-title">
+        <div class="section-head">
+          <h2 id="questions-title">서명 전에 물어볼 질문</h2>
+          <p>
+            아래 질문은 그대로 읽어도 돼. 답이 애매하면 특약사항에 문장으로 넣어달라고 하면 돼.
+          </p>
+        </div>
+
+        <div class="checklist">
+          <div class="check">
+            <span class="mark">1</span>
+            <p>해지하거나 소를 취하하면 성공보수까지 내야 하는 경우가 정확히 언제인가요?</p>
+          </div>
+          <div class="check">
+            <span class="mark">2</span>
+            <p>실제 경제적 이득이 0원인 경우 결과보수 또는 성공보수는 0원으로 정리할 수 있나요?</p>
+          </div>
+          <div class="check">
+            <span class="mark">3</span>
+            <p>제6조 제4항의 시간당 보수율은 얼마이고, 공제 전 시간기록표를 받을 수 있나요?</p>
+          </div>
+          <div class="check">
+            <span class="mark">4</span>
+            <p>원본 증거, 소송 필수 문서, 환급금은 보수채권 담보로 유치하지 않는다고 적을 수 있나요?</p>
+          </div>
+          <div class="check">
+            <span class="mark">5</span>
+            <p>인장 조각이나 사용은 서류별 사전 승인 없이는 하지 않는 것으로 특약에 넣을 수 있나요?</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="share-band" aria-label="GitHub Pages 공유 안내">
+        <h2>GitHub Pages로 공유하기</h2>
+        <p>
+          이 파일은 외부 자산 없이 동작하는 단일 <code>index.html</code>이야.
+          GitHub 저장소에 커밋하고 Pages를 켜면
+          <code>https://사용자명.github.io/저장소명/</code> 형식의 링크로 공유할 수 있어.
+        </p>
+      </aside>
+    </main>
+
+    <footer class="page">
+      이 메모는 가족이 계약 내용을 이해하기 위한 체크리스트입니다. 최종 법률 판단은 담당 변호사와
+      직접 확인해야 합니다.
+    </footer>
+  </body>
+</html>
