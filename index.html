@@ -104,6 +104,7 @@
         margin-bottom: 30px;
         color: #41484f;
         font-size: clamp(1.06rem, 1.6vw, 1.28rem);
+        word-break: keep-all;
       }
 
       .hero-actions {
@@ -158,6 +159,10 @@
         border-bottom: 1px solid var(--line);
       }
 
+      .metric > * {
+        min-width: 0;
+      }
+
       .metric:last-child {
         border-bottom: 0;
       }
@@ -174,6 +179,7 @@
       .metric b {
         color: var(--coral);
         font-size: 1.25rem;
+        overflow-wrap: anywhere;
       }
 
       section {
@@ -320,15 +326,15 @@
 
       .checklist {
         display: grid;
-        gap: 12px;
-        max-width: 860px;
+        gap: 14px;
+        max-width: 920px;
       }
 
       .check {
         display: grid;
         grid-template-columns: 34px 1fr;
-        gap: 14px;
-        padding: 16px 18px;
+        gap: 14px 16px;
+        padding: 18px;
         border-left: 4px solid var(--sage);
         background: rgba(255, 253, 248, 0.72);
       }
@@ -344,23 +350,29 @@
         font-weight: 900;
       }
 
-      .share-band {
-        margin: 34px 0 70px;
-        padding: 28px;
-        border: 1px solid rgba(32, 36, 42, 0.14);
-        border-radius: 8px;
-        background: #243746;
-        color: white;
+      .check-body {
+        display: grid;
+        gap: 8px;
       }
 
-      .share-band code {
-        display: inline-block;
-        max-width: 100%;
-        padding: 3px 7px;
-        border-radius: 6px;
-        background: rgba(255, 255, 255, 0.12);
-        color: #fff6d8;
-        overflow-wrap: anywhere;
+      .check-question {
+        margin-bottom: 0;
+        color: #20242a;
+        font-weight: 900;
+        line-height: 1.5;
+      }
+
+      .check-reason,
+      .check-valid {
+        margin-bottom: 0;
+        color: #56606a;
+        font-size: 0.94rem;
+        line-height: 1.65;
+      }
+
+      .check-reason strong,
+      .check-valid strong {
+        color: var(--sage-ink);
       }
 
       footer {
@@ -409,9 +421,99 @@
 
         .summary-panel,
         .proposal-note,
-        .script-box,
-        .share-band {
+        .script-box {
           padding: 20px;
+        }
+      }
+
+      /* Galaxy Fold7 cover display tuning */
+      @media (max-width: 430px) {
+        .page {
+          width: min(100% - 18px, 1120px);
+        }
+
+        .hero {
+          gap: 18px;
+          padding: 24px 0 18px;
+        }
+
+        h1 {
+          font-size: clamp(2.35rem, 14vw, 3.15rem);
+          line-height: 1.05;
+        }
+
+        .lead {
+          margin-bottom: 18px;
+          font-size: 1rem;
+          line-height: 1.68;
+        }
+
+        .hero-actions {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .summary-panel,
+        .risk-item,
+        .proposal-note,
+        .script-box,
+        .check {
+          border-radius: 7px;
+        }
+
+        .summary-panel {
+          overflow: hidden;
+        }
+
+        .metric {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+
+        .metric b {
+          justify-self: start;
+          font-size: 1.12rem;
+        }
+
+        .risk-map {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .risk-item {
+          min-height: auto;
+          padding: 17px;
+        }
+
+        .check {
+          grid-template-columns: 30px 1fr;
+          padding: 15px;
+        }
+
+        .check .mark {
+          width: 26px;
+          height: 26px;
+          font-size: 0.9rem;
+        }
+      }
+
+      /* Galaxy Fold7 narrow folded reading guard */
+      @media (max-width: 374px) {
+        h1 {
+          font-size: 2.28rem;
+        }
+
+        .metric {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+
+        .proposal-note .amount {
+          font-size: 2.35rem;
         }
       }
     </style>
@@ -423,8 +525,7 @@
           <p class="eyebrow">계약서 보기 전에 먼저 볼 메모</p>
           <h1>동현이가 엄마에게</h1>
           <p class="lead">
-            엄마, 이 계약서는 전부 나쁜 계약이라는 뜻은 아니야. 다만 서명 전에
-            돈이 언제, 왜, 얼마나 나가는지 분명히 해두면 나중에 마음고생을 줄일 수 있어.
+            엄마 궁금한거 있으면 또 물어봐 바로 체크해줄게.
           </p>
           <div class="hero-actions" aria-label="빠른 이동">
             <a class="button" href="#proposal">변호사에게 제안할 말</a>
@@ -512,7 +613,8 @@
           <h2 id="proposal-title">변호사에게 이렇게 제안해보자</h2>
           <p>
             싸우자는 말이 아니라 기준을 또렷하게 하자는 말이야. 계약금처럼 보이는
-            400만원 전체를 한 덩어리로 두지 말고, 시작 비용과 결과 비용을 나누자는 제안이야.
+            400만원 전체를 한 덩어리로 두지 말고, 원고 기준으로 시작 비용과
+            실제 인정액·회수액에 따른 결과 비용을 나누자는 제안이야.
           </p>
         </div>
 
@@ -522,15 +624,17 @@
             <strong class="amount">4,000,000원</strong>
             <p>
               이 금액을 전부 한 번에 확정 비용으로 보기보다, 실제 착수에 필요한 돈과
-              결과가 나왔을 때 지급하는 돈을 나눌 수 있는지 물어보는 게 핵심이야.
+              원고로서 인정받거나 회수한 금액이 생겼을 때 지급하는 돈을 나눌 수 있는지
+              물어보는 게 핵심이야.
             </p>
           </div>
 
           <div class="script-box">
             <blockquote>
               “변호사님, 400만원을 전부 착수보수로 확정하기보다
-              기본 착수금은 따로 정하고, 실제 감액이나 유리한 결과가 나왔을 때
-              결과보수 또는 성공보수를 따로 지급하는 방식으로 조정할 수 있을까요?”
+              기본 착수금은 따로 정하고, 원고인 저희에게 실제로 인정되는 금액이나
+              회수되는 금액이 생겼을 때 결과보수 또는 성공보수를 따로 지급하는 방식으로
+              조정할 수 있을까요?”
             </blockquote>
 
             <div class="split-flow" aria-label="보수 분리 구조">
@@ -541,7 +645,7 @@
               <div class="flow-arrow" aria-hidden="true">+</div>
               <div class="flow-cell">
                 <strong>결과보수 / 성공보수</strong>
-                <span>실제 감액 금액이나 경제적 이득이 확정됐을 때 지급</span>
+                <span>원고 기준 인정액, 회수액, 합의금처럼 실제 경제적 이익이 확정됐을 때 지급</span>
               </div>
             </div>
           </div>
@@ -552,42 +656,54 @@
         <div class="section-head">
           <h2 id="questions-title">서명 전에 물어볼 질문</h2>
           <p>
-            아래 질문은 그대로 읽어도 돼. 답이 애매하면 특약사항에 문장으로 넣어달라고 하면 돼.
+            아래 질문은 그대로 읽어도 돼. 터무니없는 요구가 아니라, 금액 산정 기준과
+            사건 진행 절차를 명확히 하자는 타당한 확인이야.
           </p>
         </div>
 
         <div class="checklist">
           <div class="check">
             <span class="mark">1</span>
-            <p>해지하거나 소를 취하하면 성공보수까지 내야 하는 경우가 정확히 언제인가요?</p>
+            <div class="check-body">
+              <p class="check-question">해지하거나 소를 취하하면 성공보수까지 내야 하는 경우가 정확히 언제인가요?</p>
+              <p class="check-reason"><strong>왜 물어보냐면:</strong> 계약서가 취하·해지 상황도 승소처럼 볼 수 있게 적혀 있어, 실제 판결이나 회수 없이 비용이 생길 수 있기 때문이야.</p>
+              <p class="check-valid"><strong>변호사가 들어도 타당한 이유:</strong> 성공보수는 발생 조건이 명확해야 분쟁이 줄어드니, 의뢰인이 기준을 확인하는 건 합리적이야.</p>
+            </div>
           </div>
           <div class="check">
             <span class="mark">2</span>
-            <p>실제 경제적 이득이 0원인 경우 결과보수 또는 성공보수는 0원으로 정리할 수 있나요?</p>
+            <div class="check-body">
+              <p class="check-question">실제 경제적 이득이 0원인 경우 결과보수 또는 성공보수는 0원으로 정리할 수 있나요?</p>
+              <p class="check-reason"><strong>왜 물어보냐면:</strong> 우리는 원고라서 감액이 아니라 인정액·회수액이 기준이어야 해. 받은 돈이 없는데 결과보수가 생기는 구조는 꼭 확인해야 해.</p>
+              <p class="check-valid"><strong>변호사가 들어도 타당한 이유:</strong> 원고 사건의 성공보수 기준을 실제 회수 또는 인정된 경제적 이익으로 정하자는 말이라 무리한 요구가 아니야.</p>
+            </div>
           </div>
           <div class="check">
             <span class="mark">3</span>
-            <p>제6조 제4항의 시간당 보수율은 얼마이고, 공제 전 시간기록표를 받을 수 있나요?</p>
+            <div class="check-body">
+              <p class="check-question">제6조 제4항의 시간당 보수율은 얼마이고, 공제 전 시간기록표를 받을 수 있나요?</p>
+              <p class="check-reason"><strong>왜 물어보냐면:</strong> 해지할 때 착수금에서 시간을 공제한다고 되어 있는데, 시간당 단가가 없으면 얼마가 빠질지 예측하기 어려워.</p>
+              <p class="check-valid"><strong>변호사가 들어도 타당한 이유:</strong> 시간제 정산을 하려면 단가와 기록이 있어야 하므로, 투명한 정산 기준을 묻는 건 자연스러워.</p>
+            </div>
           </div>
           <div class="check">
             <span class="mark">4</span>
-            <p>원본 증거, 소송 필수 문서, 환급금은 보수채권 담보로 유치하지 않는다고 적을 수 있나요?</p>
+            <div class="check-body">
+              <p class="check-question">원본 증거, 소송 필수 문서, 환급금은 보수채권 담보로 유치하지 않는다고 적을 수 있나요?</p>
+              <p class="check-reason"><strong>왜 물어보냐면:</strong> 자료 유치·상계 범위가 넓으면 사건을 이어가거나 다른 대리인을 선임할 때 필요한 자료 접근이 막힐 수 있어.</p>
+              <p class="check-valid"><strong>변호사가 들어도 타당한 이유:</strong> 보수 지급 보장은 필요해도, 원본 증거와 소송 필수 문서는 의뢰인 권리 보호상 예외로 두자는 제안이라 설득력이 있어.</p>
+            </div>
           </div>
           <div class="check">
             <span class="mark">5</span>
-            <p>인장 조각이나 사용은 서류별 사전 승인 없이는 하지 않는 것으로 특약에 넣을 수 있나요?</p>
+            <div class="check-body">
+              <p class="check-question">인장 조각이나 사용은 서류별 사전 승인 없이는 하지 않는 것으로 특약에 넣을 수 있나요?</p>
+              <p class="check-reason"><strong>왜 물어보냐면:</strong> 도장 사용은 권한 범위가 큰 행위라 사후 통지만으로는 엄마가 어떤 서류에 쓰였는지 놓칠 수 있어.</p>
+              <p class="check-valid"><strong>변호사가 들어도 타당한 이유:</strong> 서류별 사전 승인은 변호사 업무를 막자는 게 아니라 위임 범위를 명확히 하자는 절차라 충분히 말할 수 있어.</p>
+            </div>
           </div>
         </div>
       </section>
-
-      <aside class="share-band" aria-label="GitHub Pages 공유 안내">
-        <h2>GitHub Pages로 공유하기</h2>
-        <p>
-          이 파일은 외부 자산 없이 동작하는 단일 <code>index.html</code>이야.
-          GitHub 저장소에 커밋하고 Pages를 켜면
-          <code>https://사용자명.github.io/저장소명/</code> 형식의 링크로 공유할 수 있어.
-        </p>
-      </aside>
     </main>
 
     <footer class="page">
