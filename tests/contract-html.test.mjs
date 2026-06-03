@@ -18,7 +18,13 @@ test("public contract memo includes the fee split proposal", () => {
   assert.match(html, /원고 기준/u);
   assert.match(html, /인정액/u);
   assert.match(html, /회수/u);
+  assert.match(html, /착수보수 분납/u);
+  assert.match(html, /계약 시 200만원/u);
+  assert.match(html, /성공보수 기준 정정/u);
+  assert.match(html, /회수금액의 10%/u);
   assert.doesNotMatch(html, /감액이나 유리한 결과/u);
+  assert.doesNotMatch(html, /기본 착수금은 따로 정하고/u);
+  assert.doesNotMatch(html, /결과보수 \/ 성공보수/u);
 });
 
 test("public contract memo visualizes the four priority clauses", () => {
