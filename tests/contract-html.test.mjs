@@ -12,11 +12,9 @@ test("public contract memo has the required mom-facing title", () => {
 test("public contract memo includes the fee split proposal", () => {
   assert.match(html, /4,000,000원/u);
   assert.match(html, /착수금/u);
-  assert.match(html, /결과보수/u);
   assert.match(html, /성공보수/u);
   assert.match(html, /변호사에게 이렇게 제안해보자/u);
   assert.match(html, /원고 기준/u);
-  assert.match(html, /인정액/u);
   assert.match(html, /회수/u);
   assert.match(html, /착수보수 분납/u);
   assert.match(html, /계약 시 200만원/u);
@@ -25,6 +23,20 @@ test("public contract memo includes the fee split proposal", () => {
   assert.doesNotMatch(html, /감액이나 유리한 결과/u);
   assert.doesNotMatch(html, /기본 착수금은 따로 정하고/u);
   assert.doesNotMatch(html, /결과보수 \/ 성공보수/u);
+});
+
+test("public contract memo keeps the top-to-bottom proposal context aligned", () => {
+  const summaryPanel = html.match(/<aside class="summary-panel"[\s\S]*?<\/aside>/u)?.[0] ?? "";
+  const proposalSection = html.match(/<section id="proposal"[\s\S]*?<\/section>/u)?.[0] ?? "";
+
+  assert.match(summaryPanel, /핵심 제안/u);
+  assert.match(summaryPanel, /2가지/u);
+  assert.match(summaryPanel, /착수보수 분납과 성공보수 회수금액 기준 정정/u);
+  assert.match(proposalSection, /착수보수 400만원을 한 번에 내야 하는 부담을 분납으로 줄이고/u);
+  assert.match(proposalSection, /성공보수 기준 정정/u);
+  assert.doesNotMatch(summaryPanel, /분리/u);
+  assert.doesNotMatch(summaryPanel, /착수금과 결과보수\/성공보수를 따로 정하기/u);
+  assert.doesNotMatch(html, /결과보수는 실제 경제적 이득이 생겼을 때만/u);
 });
 
 test("public contract memo visualizes the four priority clauses", () => {
